@@ -20,6 +20,15 @@ function Navbar() {
           {user && (
             <Link to="/frais/ajouter" className="navbar-link">Ajouter Frais</Link>
           )}
+            {user && (
+                <Link to="/listeRapport" className="navbar-link">ListeRapport</Link>
+            )}
+            {user && (
+                <Link to="/RapportAdd" className="navbar-link">Ajouter un Rapport</Link>
+            )}
+            {user && (
+                <Link to="/TopMédoc" className="navbar-link">Le top des Médicament</Link>
+            )}
         </div>
 
         

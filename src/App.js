@@ -11,6 +11,9 @@ import FraisEdit from './components/FraisEdit';
 import FraisHorsForfait from './pages/FraisHorsForfait';
 import FraisHorsForfaitAdd from './pages/FraisHorsForfaitAdd';
 import FraisHorsForfaitEdit from './pages/FraisHorsForfaitEdit';
+import RapportAdd from  './pages/RapportAdd';
+import TopMédoc from './pages/TopMédoc'
+import ListeRapport from './pages/ListeRapport';
 
 function App() {
   return (
@@ -47,7 +50,20 @@ function App() {
             path="/dashboard"
             element={<PrivateRoute><Dashboard /></PrivateRoute>}
           />
+            <Route
+            path="/listeRapport"
+            element={<PrivateRoute><ListeRapport/></PrivateRoute>}
+            />
+            <Route
+                path="/RapportAdd"
+                element={<PrivateRoute><RapportAdd/></PrivateRoute>}
+            />
+            <Route
+                path="/TopMédoc"
+                element={<PrivateRoute><TopMédoc/></PrivateRoute>}
+            />
         </Routes>
+
       </BrowserRouter>
     </AuthProvider>
   );
