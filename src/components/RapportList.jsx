@@ -5,11 +5,11 @@ import { useAuth } from "../context/AuthContext";
 import { API_URL } from "../services/authService";
 import { useNavigate } from 'react-router-dom';
 
-export default function FraisTable() {
+export default function RapportList() {
     const { user, token } = useAuth();
     const navigate = useNavigate();
 
-    const [fraisList, setFraisList] = useState([]);
+    const [RapportList, setRapportList] = useState([]);
     const [loading, setLoading] = useState(true);
 
 
@@ -17,9 +17,9 @@ export default function FraisTable() {
 
     useEffect(() => {
         if (!user || !token) return;
-        const fetchFrais = async () => {
+        const fetchRapport = async () => {
             try {
-                const response = await axios.get(`${API_URL}frais/liste/${user.id_visiteur}`, {
+                const response = await axios.get(`${API_URL}rapport/liste/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setFraisList(response.data);
@@ -29,7 +29,7 @@ export default function FraisTable() {
                 setLoading(false);
             }
         };
-        fetchFrais();
+        fetchRapport();
     }, [user, token]);
 
 
@@ -60,8 +60,8 @@ export default function FraisTable() {
     if (loading) return <div><b>Chargement des frais ...</b></div>;
 
     return (
-        <div className="frais-table-container">
-            <h2>Liste des Frais</h2>
+        <div className="rapport-table-container">
+            <h2>Liste des Rapport</h2>
 
 
             <div className="filter-container">
@@ -76,7 +76,7 @@ export default function FraisTable() {
             </div>
 
 
-            <table className="frais-table">
+            <table className="rapport-table">
                 <thead>
                 <tr>
                     <th>nom du praticien</th>
@@ -91,14 +91,14 @@ export default function FraisTable() {
                 </thead>
 
                 <tbody>
-                {filteredFrais.map((rapport) => (
-                    <tr key={rapport.nom_praticien}>
-                        <td>{rapport.id_frais}</td>
-                        <td>{rapport.id_etat}</td>
-                        <td>{rapport.anneemois}</td>
-                        <td>{rapport.id_visiteur}</td>
-                        <td>{rapport.nbjustificatifs}</td>
-                        <td>{rapport.datemodification}</td>
+                {filteredRapport.map((rapport) => (
+                    <tr>
+                        <td>{rapport.nom_praticien}</td>
+                        <td>{rapport.prenom_praticien}</td>
+                        <td>{rapport.id_rapport}</td>
+                        <td>{rapport.date_rapport}</td>
+                        <td>{rapport.bilan}</td>
+                        <td>{rapport.motif}</td>
 
                         <td>
                             <button
