@@ -76,44 +76,39 @@ export default function RapportList() {
 
             <table className="frais-table">
                 <thead>
-                <tr>
-                    <th>Nom du praticien</th>
-                    <th>Prénom du praticien</th>
-                    <th>ID du rapport</th>
-                    <th>Date du rapport</th>
-                    <th>Bilan</th>
-                    <th>Motif</th>
-                    <th>Actions</th>
-                </tr>
+                    <tr>
+                        <th>Nom du praticien</th>
+                        <th>Prénom du praticien</th>
+                        <th>ID du rapport</th>
+                        <th>Date du rapport</th>
+                        <th>Bilan</th>
+                        <th>Motif</th>
+                        <th>Actions</th>
+                    </tr>
                 </thead>
 
                 <tbody>
-                {filteredRapport.map((rapport) => (
-                    <tr key={rapport.id_rapport}>
-                        <td>{rapport.nom_praticien}</td>
-                        <td>{rapport.prenom_praticien}</td>
-                        <td>{rapport.id_rapport}</td>
-                        <td>{rapport.date_rapport}</td>
-                        <td>{rapport.bilan}</td>
-                        <td>{rapport.motif}</td>
+                    {filteredRapport.map((rapport) => (
+                        <tr key={rapport.id_rapport}>
+                            <td>{rapport.nom_praticien}</td>
+                            <td>{rapport.prenom_praticien}</td>
+                            <td>{rapport.id_rapport}</td>
+                            <td>{rapport.date_rapport}</td>
+                            <td>{rapport.bilan}</td>
+                            <td>{rapport.motif}</td>
 
-                        <td>
-                            <button
-                                onClick={() => navigate(`/rapport/${rapport.id_rapport}/medicaments`)}
-                                className="edit-button"
-                            >
-                                Médicaments
-                            </button>
+                            <td>
+                                <button
+                                    onClick={() => navigate(`/rapport/${rapport.id_rapport}/medicaments`)}
+                                    className="edit-button"
+                                >
+                                    Médicaments
+                                </button>
 
-                            <button
-                                onClick={() => handleDelete(rapport.id_rapport)}
-                                className="delete-button"
-                            >
-                                Supprimer
-                            </button>
-                        </td>
-                    </tr>
-                ))}
+                                
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

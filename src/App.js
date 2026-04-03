@@ -14,6 +14,9 @@ import FraisHorsForfaitEdit from './pages/FraisHorsForfaitEdit';
 import RapportAdd from  './pages/RapportAdd';
 import TopMédoc from './pages/TopMédoc'
 import ListeRapport from './pages/ListeRapport';
+import MedicamentOfferts from './components/MedicamentOfferts';
+import ModifierOffert from './components/ModifierOffert';
+import AjouterOffert from './components/AjouterOffert';
 
 function App() {
   return (
@@ -61,6 +64,20 @@ function App() {
             <Route
                 path="/TopMédoc"
                 element={<PrivateRoute><TopMédoc/></PrivateRoute>}
+            />
+
+            {/* Nouvelles routes pour les médicaments offerts */}
+            <Route
+  path="/rapport/:id_rapport/medicaments"
+  element={<PrivateRoute><MedicamentOfferts /></PrivateRoute>}
+/>
+            <Route
+                path="/rapport/:id_rapport/modifier-offert/:id_medicament"
+                element={<PrivateRoute><ModifierOffert /></PrivateRoute>}
+            />
+            <Route
+                path="/rapport/:id_rapport/ajouter-offert"
+                element={<PrivateRoute><AjouterOffert /></PrivateRoute>}
             />
         </Routes>
 
